@@ -23,7 +23,7 @@ const NewUserPage = () => {
 
     const [usuario, setUsuario] = useState<Projeto.Usuario>(usuarioVazio);
     const loginService = useMemo(() => new LoginService(), []);
-
+   
     const { layoutConfig } = useContext(LayoutContext);
 
     const router = useRouter();
@@ -33,7 +33,7 @@ const NewUserPage = () => {
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, name: string) => {
         const val = (e.target && e.target.value) || '';
-
+        
         setUsuario(prevUsuario => ({
             ...prevUsuario,
             [name]: val,
@@ -42,7 +42,7 @@ const NewUserPage = () => {
 
     const novoUsuario = () => {
         loginService.novoCadastro(usuario).then(() => {
-
+    
             setUsuario(usuarioVazio);    
             toast.current?.show({
                 severity: 'info',
